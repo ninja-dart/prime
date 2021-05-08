@@ -2,7 +2,7 @@ import 'dart:math';
 
 final _bigFF = BigInt.from(0xff);
 
-BigInt randomPrimeBigInt(int bits, {Random random}) {
+BigInt randomPrimeBigInt(int bits, {Random? random}) {
   random ??= Random.secure();
 
   while (true) {
@@ -18,7 +18,7 @@ BigInt randomPrimeBigInt(int bits, {Random random}) {
   }
 }
 
-BigInt randomBigInt(int bits, {BigInt max, Random random}) {
+BigInt randomBigInt(int bits, {BigInt? max, Random? random}) {
   random ??= Random(DateTime.now().millisecondsSinceEpoch);
 
   if (max != null) {
@@ -45,7 +45,7 @@ BigInt randomBigInt(int bits, {BigInt max, Random random}) {
 
     // Make sure generated number is less than [max]
     if (!lessThanMax) {
-      final maxByte = ((max >> ((numBytes - i - 1) * 8)) & _bigFF).toInt();
+      final maxByte = ((max! >> ((numBytes - i - 1) * 8)) & _bigFF).toInt();
       if(next >= maxByte) {
         int mask = (next ^ maxByte) & next;
         int maskMask = 0x80;
