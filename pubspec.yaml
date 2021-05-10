@@ -1,14 +1,15 @@
 name: ninja_prime
 description: Utility functions and methods to generate random BigInt, generate random prime BigInt and check if BigInt is prime.
-version: 1.0.0
+version: 2.0.0
 homepage: https://github.com/ninja-dart/prime
 
-environment:
-  sdk: '>=2.12.0-0 <3.0.0'
+documentation:
 
-#dependencies:
-#  path: ^1.7.0
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
 
 dev_dependencies:
-  pedantic: ^1.8.0
-  test: ^1.16.5
+  pedantic: ^1.11.0
+  test: ^1.17.3
