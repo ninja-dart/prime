@@ -1,5 +1,7 @@
 import 'dart:math';
 
+export 'prime_factor.dart';
+
 final _bigFF = BigInt.from(0xff);
 
 BigInt randomPrimeBigInt(int bits, {Random? random}) {
@@ -46,12 +48,12 @@ BigInt randomBigInt(int bits, {BigInt? max, Random? random}) {
     // Make sure generated number is less than [max]
     if (!lessThanMax) {
       final maxByte = ((max! >> ((numBytes - i - 1) * 8)) & _bigFF).toInt();
-      if(next >= maxByte) {
+      if (next >= maxByte) {
         int mask = (next ^ maxByte) & next;
         int maskMask = 0x80;
-        if(i == 0) {
+        if (i == 0) {
           int safeBits = bits - (numBytes - 1) * 8;
-          if(safeBits == 1) {
+          if (safeBits == 1) {
             maskMask = 0;
           } else {
             maskMask = 1 << (safeBits - 2);
