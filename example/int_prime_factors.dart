@@ -1,7 +1,10 @@
 import 'package:ninja_prime/ninja_prime.dart';
 
 void main() {
-  print(2147483647.isPrime);
-  print((997).isPrime);
-  print(163.isPrime);
+  int v = BigIntPrime.smallPrimes.take(10).fold<int>(1, (p, e) => p * e);
+  print('$v ${v.uniqPrimeFactors}');
+  print('$v ${v.primeFactors}');
+  v = 5 * 5 * 5 * 11 * 11 * 13;
+  print('$v ${v.uniqPrimeFactors}');
+  print('$v ${v.primeFactors}');
 }

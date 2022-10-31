@@ -7,12 +7,6 @@ int findLeastPrimeFactor(int v) {
 }
 
 @experimental
-Iterable<int> findPrimeFactors(int v) {
-  // TODO
-  throw UnimplementedError();
-}
-
-@experimental
 bool isCoprime(int a, int b) => gcd(a, b) == 1;
 
 int gcd(int a, int b) {
@@ -44,5 +38,87 @@ extension IntPrime on int {
     }
 
     return true;
+  }
+
+  List<int> get uniqPrimeFactors {
+    if (this <= 0) {
+      throw Exception('cannot only find prime factors for positive numbers');
+    }
+
+    final ret = <int>[];
+
+    int reduce(int x, int d) {
+      while (x % d == 0) {
+        x ~/= d;
+      }
+      ret.add(d);
+      return x;
+    }
+
+    int t = this;
+    if (this % 2 == 0) {
+      t = reduce(t, 2);
+    }
+    if (this % 3 == 0) {
+      t = reduce(t, 3);
+    }
+
+    for (int i = 5; i * i <= this; i += 6) {
+      if (this % i == 0) {
+        t = reduce(t, i);
+        if (t == 1) {
+          break;
+        }
+      }
+      if (this % (i + 2) == 0) {
+        t = reduce(t, i + 2);
+        if (t == 1) {
+          break;
+        }
+      }
+    }
+
+    return ret;
+  }
+
+  List<int> get primeFactors {
+    if (this <= 0) {
+      throw Exception('cannot only find prime factors for positive numbers');
+    }
+
+    final ret = <int>[];
+
+    int reduce(int x, int d) {
+      while (x % d == 0) {
+        x ~/= d;
+        ret.add(d);
+      }
+      return x;
+    }
+
+    int t = this;
+    if (this % 2 == 0) {
+      t = reduce(t, 2);
+    }
+    if (this % 3 == 0) {
+      t = reduce(t, 3);
+    }
+
+    for (int i = 5; i * i <= this; i += 6) {
+      if (this % i == 0) {
+        t = reduce(t, i);
+        if (t == 1) {
+          break;
+        }
+      }
+      if (this % (i + 2) == 0) {
+        t = reduce(t, i + 2);
+        if (t == 1) {
+          break;
+        }
+      }
+    }
+
+    return ret;
   }
 }
