@@ -15,7 +15,6 @@ Iterable<int> findPrimeFactors(int v) {
 @experimental
 bool isCoprime(int a, int b) => gcd(a, b) == 1;
 
-@experimental
 int gcd(int a, int b) {
   int n = 0;
   while (b > 0) {
