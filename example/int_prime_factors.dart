@@ -7,4 +7,5 @@ void main() {
   v = 5 * 5 * 5 * 11 * 11 * 13;
   print('$v ${v.uniqPrimeFactors}');
   print('$v ${v.primeFactors}');
+  print(1210362630.uniqPrimeFactors);
 }
